@@ -149,7 +149,7 @@ def magnitude_corrB (velocity, energ, dist, dt):     #computes absolute magnitud
     m = magnitude(velocity, energ, dist, dt)
     cmv = -0.022 * velocity + 0.79
     dmv = 0.102 * velocity - 3.31
-    mcorr = m + cmv*math.log10(energ*dist**2) + dmv
+    mcorr = m + cmv*math.log10(energ*dist**2) - cmv*math.log10(dt*A) + dmv
     return mcorr
     
 df['mag_Bcorr'] = df.apply(
